@@ -4,6 +4,8 @@
 #include<mpi.h>
 #endif
 
+#include <gem5/m5ops.h>
+
 int main( int argc, char* argv[] )
 {
 	// =====================================================================
@@ -76,7 +78,9 @@ int main( int argc, char* argv[] )
 	// Start Simulation Timer
 	omp_start = get_time();
 
-	// Run simulation
+    m5_exit(0); // allow m5 to reset stats
+
+    // Run simulation
 	if( in.simulation_method == EVENT_BASED )
 	{
 		if( in.kernel_id == 0 )
@@ -98,7 +102,9 @@ int main( int argc, char* argv[] )
 		printf("Simulation complete.\n" );
 	}
 
-	// End Simulation Timer
+    m5_exit(0); // allow m5 to dump stats
+
+    // End Simulation Timer
 	omp_end = get_time();
 
 	// =====================================================================
@@ -118,6 +124,8 @@ int main( int argc, char* argv[] )
 	#ifdef AML
 	aml_finalize();
 	#endif
+
+    m5_exit(0); // exit the simulation
 
 	return is_invalid_result;
 }

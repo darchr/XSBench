@@ -55,13 +55,13 @@ This version of XSBench is written in HIP for use with GPU architectures. This v
 To compile XSBench with default settings, navigate to your selected source directory and use the following command:
 
 ```bash
-make
+make M5_BUILD_PATH=${GEM5_FOLDER}/util/m5/build/x86_or_arm64_or_riscv
 ```
  
  You can alter compiler settings in the included Makefile. Alternatively, for the OpenMP threading version of XSBench you may specify a compiler via the CC environment variable and then making as normal, e.g.:
 ```bash
 export CC=clang
-make
+make M5_BUILD_PATH=${GEM5_FOLDER}/util/m5/build/x86_or_arm64_or_riscv
 ```
 
 ### Debugging, Optimization & Profiling

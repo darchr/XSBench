@@ -97,6 +97,12 @@ ifeq ($(AML),yes)
   CFLAGS += -DAML $(shell pkg-config --cflags aml)
 endif
 
+# M5
+ifneq ($(M5_BUILD_PATH),)
+  CFLAGS += -I$(M5_BUILD_PATH)/../../../../include/
+  LDFLAGS += -lm5 -L$(M5_BUILD_PATH)/out/
+endif
+
 #===============================================================================
 # Targets to Build
 #===============================================================================
